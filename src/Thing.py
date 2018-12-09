@@ -1,6 +1,6 @@
 # Name: Seth M. Fuller
 # Date: 11/27/2018
-# File: Scene.py
+# File: Thing.py
 
 import pygame
 

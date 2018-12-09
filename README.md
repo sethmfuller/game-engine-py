@@ -41,3 +41,8 @@ The Thing class is essentially a subclass of the `pygame.sprite.Sprite`. It supp
 - [`flip()`](https://github.com/sethmfuller/game-engine-py/blob/master/src/Thing.py#L133)
 - [`scale()`](https://github.com/sethmfuller/game-engine-py/blob/master/src/Thing.py#L136)
 - [`rotate()`](https://github.com/sethmfuller/game-engine-py/blob/master/src/Thing.py#L139)
+
+## Example
+
+An example game is in the [ExampleGame.py](https://github.com/sethmfuller/game-engine-py/blob/master/src/ExampleGame.py) file.
+To run the game type `python3 ExampleGame.py` into the commandline. Make sure you have Pygame installed.

@@ -85,8 +85,8 @@ function Sprite(scene, imageFile, width, height){
       ctx.rotate(this.imgAngle);
 
       //draw image with center on origin
-	if( this.animation != false ){
-          this.animation.drawFrame(ctx);
+	if (this.animation != false ){
+        this.animation.drawFrame(ctx);
 	}
 	else{
 	  ctx.drawImage(this.image,

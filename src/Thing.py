@@ -128,3 +128,13 @@ class Thing(pygame.sprite.Sprite):
 
     def change_image(self, image_location):
         self.image = pygame.image.load(image_location)
+
+    # Transformations
+    def flip(self, vertical=True, horizontal=False):
+        self.image = pygame.transform.flip(self.image, vertical, horizontal)
+
+    def scale(self, new_resolution):
+        self.image = pygame.transform.scale(self.image, new_resolution)
+
+    def rotate(self, angle):
+        self.image = pygame.transform.rotate(self.image, angle)

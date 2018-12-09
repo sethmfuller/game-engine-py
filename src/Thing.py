@@ -128,6 +128,3 @@ class Thing(pygame.sprite.Sprite):
 
     def change_image(self, image_location):
         self.image = pygame.image.load(image_location)
-
-    def check_keys(self):
-        """Check if keys are pressed down"""

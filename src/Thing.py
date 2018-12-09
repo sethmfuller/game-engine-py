@@ -3,7 +3,6 @@
 # File: Scene.py
 
 import pygame
-import os
 
 
 class Thing(pygame.sprite.Sprite):
@@ -16,8 +15,8 @@ class Thing(pygame.sprite.Sprite):
         self.visible = True
         self.x = initial_x
         self.y = initial_y
-        self.dx = 10
-        self.dy = 1
+        self.dx = 0
+        self.dy = 0
 
         # Bounds actions
         self.LEAVE = 0
@@ -26,11 +25,14 @@ class Thing(pygame.sprite.Sprite):
         self.SKID = 3
         self.DIE = 4
 
+        # Default bounds action is to just leave the scene and not return
         self.bounds_action = self.LEAVE
 
         self.scene.add_sprite(self)
 
-    def update(self, *args):
+    def update(self):
+        """The update method for the sprite"""
+
         self.x += self.dx
         self.y += self.dy
 
@@ -38,11 +40,18 @@ class Thing(pygame.sprite.Sprite):
         if self.visible:
             self.scene.screen.blit(self.image, (self.x, self.y))
             self.check_bounds()
+            self.check_collisions()
+            self.check_keys()
 
-    def set_bounds_action(self, action):
-        self.bounds_action = action
+    def collides_with(self, thing):
+        return self.image.get_rect().colliderect(thing.image.get_rect())
+
+    def check_collisions(self):
+        """Check for when the Thing touches another Thing"""
 
     def check_bounds(self):
+        """Check for when the sprite hits one of the four sides of a Scene, the bounds"""
+
         if self.bounds_action == self.BOUNCE:
             if self.hits_left_or_right():
                 self.dx = self.dx * -1
@@ -69,18 +78,25 @@ class Thing(pygame.sprite.Sprite):
                 self.dy = 0
                 self.visible = False
 
+    def check_keys(self):
+        """Check for when the user presses a key. This method is meant to be overridden"""
+
+    def set_bounds_action(self, action):
+        self.bounds_action = action
+
     def hits_left_or_right(self):
         """Helper function used in check_bounds"""
         if self.x >= self.scene.screen.get_width() - self.image.get_width() or self.x <= 0:
             return True
-        else: return False
+        else:
+            return False
 
     def hits_top_or_bottom(self):
         """Helper function used in check_bounds"""
         if self.y >= self.scene.screen.get_height() - self.image.get_height() or self.y <= 0:
             return True
-        else: return False
-
+        else:
+            return False
 
     def set_position(self, x, y):
         self.set_x(x)

@@ -346,29 +346,29 @@ function Sprite(scene, imageFile, width, height){
 
     //collisions only activated when both sprites are visible
     collision = false;
-    if (this.visible){
+    if (this.visible) {
 
-      if (sprite.visible){
-	//define borders
-	myLeft = this.x - (this.width / 2);
-	myRight = this.x + (this.width / 2);
-	myTop = this.y - (this.height / 2);
-	myBottom = this.y + (this.height / 2);
-	otherLeft = sprite.x - (sprite.width / 2);
-	otherRight = sprite.x + (sprite.width / 2);
-	otherTop = sprite.y - (sprite.height / 2);
-	otherBottom = sprite.y + (sprite.height / 2);
+     if (sprite.visible){
+        //define borders
+        myLeft = this.x - (this.width / 2);
+        myRight = this.x + (this.width / 2);
+        myTop = this.y - (this.height / 2);
+        myBottom = this.y + (this.height / 2);
+        otherLeft = sprite.x - (sprite.width / 2);
+        otherRight = sprite.x + (sprite.width / 2);
+        otherTop = sprite.y - (sprite.height / 2);
+        otherBottom = sprite.y + (sprite.height / 2);
 
-	//assume collision
-	collision = true;
+        //assume collision
+        collision = true;
 
-	//determine non-colliding states
-	if ((myBottom < otherTop) ||
-	    (myTop > otherBottom) ||
-	    (myRight < otherLeft) ||
-	    (myLeft > otherRight)) {
-	      collision = false;
-	} // end if
+        //determine non-colliding states
+        if ((myBottom < otherTop) ||
+            (myTop > otherBottom) ||
+            (myRight < otherLeft) ||
+            (myLeft > otherRight)) {
+              collision = false;
+        } // end if
 
       } // end 'other visible' if
     } // end 'I'm visible' if

@@ -2,8 +2,8 @@
 # Date: 11/27/2018
 # File: ExampleGame.py
 
-from src.Scene import Scene
-from src.Thing import Thing
+from Scene import Scene
+from Thing import Thing
 import pygame
 from pygame.locals import *
 
